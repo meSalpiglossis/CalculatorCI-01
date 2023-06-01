@@ -30,19 +30,12 @@ public class MainTest {
     }
 
     @Test(dataProvider = "Positive Data")
-    public void testCalc(String input, String result) throws Exception {
+    public void testCalc(String input, String result) {
         Assert.assertEquals(result, Main.calc(input));
     }
 
-    @Test(dataProvider = "Negative Data", expectedExceptions = { Exception.class })
-    public void testCalcException(String input) throws Exception {
-        Main.calc(input);
-    }
-
-    @Test
-    public void testCalc2() {
-        String input = "2 - 2";
-        String signs = input.replaceAll("[^+\\-*\\/]", "");
-        System.out.println(signs);
+    @Test(dataProvider = "Negative Data")
+    public void testCalcException(String input) {
+        Assert.assertEquals("throws Exception", Main.calc(input));
     }
 }

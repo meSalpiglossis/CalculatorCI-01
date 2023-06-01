@@ -7,7 +7,6 @@ public class Main {
     }
 
     public static String calc(String input) {
-        //a regular expression that matches the condition of the task (hopefully)
         final String regex = "^(?:[1-9]|10) ?[+\\-*/] ?(?:[1-9]|10)$";
 
         System.out.println("Input:");
@@ -22,7 +21,8 @@ public class Main {
             try {
                 throw new Exception("Invalid input");
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                System.out.println("\nOutput:\nthrows Exception");
+                return "throws Exception";
             }
         }
 
