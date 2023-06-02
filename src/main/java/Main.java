@@ -3,19 +3,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        calc("");
+        System.out.println("Input:");
+        String input = new Scanner(System.in).nextLine();
+
+        System.out.println("\nOutput:\n" + calc(input));
     }
 
     public static String calc(String input) {
         final String regex = "^(?:[1-9]|10) ?[+\\-*/] ?(?:[1-9]|10)$";
-
-        System.out.println("Input:");
-
-        if (input.equals("")) {
-            input = consoleInput();
-        } else {
-            System.out.println(input);
-        }
 
         if (!input.matches(regex)) {
             try {
@@ -30,20 +25,12 @@ public class Main {
 
         String operator = input.replaceAll("[^+\\-*/]", "");
 
-        String result = switch (operator) {
+        return switch (operator) {
             case "+" -> String.valueOf(operand[0] + operand[1]);
             case "-" -> String.valueOf(operand[0] - operand[1]);
             case "*" -> String.valueOf(operand[0] * operand[1]);
             case "/" -> String.valueOf(operand[0] / operand[1]);
             default -> "";
         };
-
-        System.out.println("\nOutput:\n" + result);
-
-        return result;
-    }
-
-    private static String consoleInput() {
-        return new Scanner(System.in).nextLine();
     }
 }
